@@ -1,7 +1,7 @@
 run_analysis <- function() {
   
   #Reading the 'Test' data set
-  xtestfilepath <- file.path("C:","Users","kvadrevu", "Documents", "cp","UCI HAR Dataset","test","X_test.txt")
+  xtestfilepath <- file.path(".","UCI HAR Dataset","test","X_test.txt")
   
   xtestfilepath <- normalizePath(xtestfilepath)
   
@@ -9,7 +9,8 @@ run_analysis <- function() {
   xtest <- read.table(xtestfilepath,header=F)
   
   #Reading the features.txt into a data frame
-  features <- read.table("C:/Users/kvadrevu/Documents/cp/UCI HAR Dataset/features.txt",header=F, as.is=T)
+  #features <- read.table("C:/Users/kvadrevu/Documents/cp/UCI HAR Dataset/features.txt",header=F, as.is=T)
+  features <- read.table("./UCI HAR Dataset/features.txt",header=F, as.is=T)
   
   #Capturing the feature list
   flist <- features$V2
@@ -18,7 +19,7 @@ run_analysis <- function() {
   colnames(xtest) <- flist
   
   #Reading the y_test.txt into a data frame
-  ytest <- read.table("C:/Users/kvadrevu/Documents/cp/UCI HAR Dataset/test/y_test.txt",header=F)
+  ytest <- read.table("./UCI HAR Dataset/test/y_test.txt",header=F)
   
   colnames(ytest) <- "activity"
   
@@ -45,7 +46,7 @@ run_analysis <- function() {
   testAndactivity <- cbind(xtest,ytest)
   
   #Reading the subject_test.txt into a data frame
-  subject_test <- read.table("C:/Users/kvadrevu/Documents/cp/UCI HAR Dataset/test/subject_test.txt",header=F)
+  subject_test <- read.table("./UCI HAR Dataset/test/subject_test.txt",header=F)
   
   colnames(subject_test) <- "subject"
   
@@ -53,7 +54,7 @@ run_analysis <- function() {
   allTestData <- cbind(subject_test,testAndactivity)
   
   #Building the 'Training' data set
-  xtrainfilepath <- file.path("C:","Users","kvadrevu", "Documents", "cp","UCI HAR Dataset","train","X_train.txt")
+  xtrainfilepath <- file.path(".","UCI HAR Dataset","train","X_train.txt")
   
   xtrainfilepath <- normalizePath(xtrainfilepath)
   
@@ -63,7 +64,7 @@ run_analysis <- function() {
   colnames(xtrain) <- flist
   
   #Reading the y_train.txt into a data frame
-  ytrain <- read.table("C:/Users/kvadrevu/Documents/cp/UCI HAR Dataset/train/y_train.txt",header=F)
+  ytrain <- read.table("./UCI HAR Dataset/train/y_train.txt",header=F)
   
   #Assigning column name
   colnames(ytrain) <- "activity"
@@ -91,7 +92,7 @@ run_analysis <- function() {
   cc1 <- cbind(xtrain,ytrain)
   
   #Reading training subject data in to a data frame
-  subject_train <- read.table("C:/Users/kvadrevu/Documents/cp/UCI HAR Dataset/train/subject_train.txt",header=F)
+  subject_train <- read.table("./UCI HAR Dataset/train/subject_train.txt",header=F)
   
   #Adding descriptive column name
   colnames(subject_train) <- "subject"
